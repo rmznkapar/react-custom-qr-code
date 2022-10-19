@@ -44,6 +44,7 @@ const QRCode = forwardRef(({ bgColor, fgColor, level, size, value, eyeRadius, ..
               key={`rectangle-${rowIndex}-${cellIndex}`}
               /* eslint-enable react/no-array-index-key */
               d={`M 0 0 L ${qrItemWidth} 0 L ${qrItemWidth} ${qrItemHeight} L 0 ${qrItemHeight} Z`}
+              cellSize={qrItemWidth}
               fill={cell ? fgColor : bgColor}
               transformX={transformX}
               transformY={transformY}
