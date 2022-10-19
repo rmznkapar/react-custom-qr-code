@@ -13,6 +13,7 @@ const propTypes = {
   size: PropTypes.number,
   value: PropTypes.string.isRequired,
   eyeRadius: PropTypes.number,
+  dot: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -21,9 +22,10 @@ const defaultProps = {
   level: "L",
   size: 256,
   eyeRadius: 0,
+  dot: false,
 };
 
-const QRCode = forwardRef(({ bgColor, fgColor, level, size, value, eyeRadius, ...props }, ref) => {
+const QRCode = forwardRef(({ bgColor, fgColor, level, size, value, eyeRadius, dot, ...props }, ref) => {
   // We'll use type === -1 to force QRCode to automatically pick the best type.
   const qrcode = new QRCodeImpl(-1, ErrorCorrectLevel[level]);
   qrcode.addData(value);
@@ -45,6 +47,7 @@ const QRCode = forwardRef(({ bgColor, fgColor, level, size, value, eyeRadius, ..
               /* eslint-enable react/no-array-index-key */
               d={`M 0 0 L ${qrItemWidth} 0 L ${qrItemWidth} ${qrItemHeight} L 0 ${qrItemHeight} Z`}
               cellSize={qrItemWidth}
+              dot={dot}
               fill={cell ? fgColor : bgColor}
               transformX={transformX}
               transformY={transformY}
