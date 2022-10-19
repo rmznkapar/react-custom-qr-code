@@ -12,6 +12,7 @@ const propTypes = {
   level: PropTypes.string,
   size: PropTypes.number,
   value: PropTypes.string.isRequired,
+  eyeRadius: PropTypes.number,
 };
 
 const defaultProps = {
@@ -19,9 +20,10 @@ const defaultProps = {
   fgColor: "#000000",
   level: "L",
   size: 256,
+  eyeRadius: 0,
 };
 
-const QRCode = forwardRef(({ bgColor, fgColor, level, size, value, ...props }, ref) => {
+const QRCode = forwardRef(({ bgColor, fgColor, level, size, value, eyeRadius, ...props }, ref) => {
   // We'll use type === -1 to force QRCode to automatically pick the best type.
   const qrcode = new QRCodeImpl(-1, ErrorCorrectLevel[level]);
   qrcode.addData(value);
